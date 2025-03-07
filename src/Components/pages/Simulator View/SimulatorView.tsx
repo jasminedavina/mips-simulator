@@ -35,6 +35,7 @@ import MonoMIPS from "../../../Hardware/Mono Mips/MonoMIPS";
 import WorkerService from "../../../Service/WorkerService";
 import { ScreenRenderer } from "./Editor Tab/Screen";
 import HexView from "./HexView";
+import MemoryView from "./MemoryView";
 
 // const cpuWorker = new Worker(new URL('./MonoMIPSWorker.ts', import.meta.url));
 
@@ -211,6 +212,7 @@ export default function SimulatorView() {
         <Tab style={{zIndex:50}}>Editor</Tab>
         <Tab style={{zIndex:50}}>Hex View</Tab>
         <Tab style={{zIndex:50}}>Datapath</Tab>
+        <Tab style={{zIndex:50}}>Memory View</Tab>
       </TabList>
 
       <TabPanels>
@@ -237,6 +239,11 @@ export default function SimulatorView() {
         <TabPanel>
           <HardwareView callExecutableStep={callExecuteStep} />
           {/* stepFunc={callExecuteStep} currentI={share.currentProcessor?.currentInstruction ?? null} */}
+        </TabPanel>
+
+        /* Add MemoryView in the new tab */
+        <TabPanel>
+          <MemoryView />
         </TabPanel>
       </TabPanels>
     </Tabs>
